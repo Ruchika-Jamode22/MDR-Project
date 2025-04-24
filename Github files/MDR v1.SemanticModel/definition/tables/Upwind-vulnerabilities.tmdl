@@ -1,0 +1,100 @@
+table Upwind-vulnerabilities
+	lineageTag: 6111ce7f-b2d7-4f15-953c-743fd51dd4e1
+
+	column 'Cloud Accounts'
+		dataType: string
+		lineageTag: 33bb5158-d4c9-432f-b5e9-407d0cd4ea45
+		summarizeBy: none
+		sourceColumn: Cloud Accounts
+
+		annotation SummarizationSetBy = Automatic
+
+	column Vulnerabilities
+		dataType: int64
+		formatString: #,0
+		lineageTag: 3c831a1a-2bd5-48ec-a430-0f11351ce30f
+		summarizeBy: none
+		sourceColumn: Vulnerabilities
+
+		annotation SummarizationSetBy = User
+
+	column Critical
+		dataType: int64
+		formatString: #,0
+		lineageTag: e9584fb2-9a37-497e-bc1b-63e0c7e2eded
+		summarizeBy: sum
+		sourceColumn: Critical
+
+		annotation SummarizationSetBy = Automatic
+
+	column High
+		dataType: int64
+		formatString: #,0
+		lineageTag: a276a7a3-3bbe-4e3f-9f64-117efff430e7
+		summarizeBy: sum
+		sourceColumn: High
+
+		annotation SummarizationSetBy = Automatic
+
+	column Medium
+		dataType: int64
+		formatString: #,0
+		lineageTag: 042a8f8d-4b3b-4cf4-882b-c849477b3d51
+		summarizeBy: sum
+		sourceColumn: Medium
+
+		annotation SummarizationSetBy = Automatic
+
+	column Low
+		dataType: int64
+		formatString: #,0
+		lineageTag: 53ff2f65-52dc-48a2-8e7a-ce52d07d311a
+		summarizeBy: sum
+		sourceColumn: Low
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 9ee277fc-9d86-46d2-b481-989df7692420
+		summarizeBy: none
+		sourceColumn: Date
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Shift Time (BKK)'
+		dataType: string
+		lineageTag: ccafd959-139a-4298-843f-32e4901f03f1
+		summarizeBy: none
+		sourceColumn: Shift Time (BKK)
+
+		annotation SummarizationSetBy = Automatic
+
+	column Shift
+		dataType: string
+		lineageTag: 827a0c99-6c14-45ef-b51d-0f96e8fb7f8d
+		summarizeBy: none
+		sourceColumn: Shift
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Upwind-vulnerabilities = m
+		mode: import
+		source =
+				let
+				    Source = GoogleSheets.Contents("https://docs.google.com/spreadsheets/d/1PsQQV2ap6AKuWiRY9S219ySW1yrv23uXNoJ7mHSHf-E/edit?gid=2030916635#gid=2030916635"),
+				    #"Upwind-vulnerabilities_Table" = Source{[name="Upwind-vulnerabilities",ItemKind="Table"]}[Data],
+				    #"Promoted Headers" = Table.PromoteHeaders(#"Upwind-vulnerabilities_Table", [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Cloud Accounts", type text}, {"Vulnerabilities", Int64.Type}, {"Critical", Int64.Type}, {"High", Int64.Type}, {"Medium", Int64.Type}, {"Low", Int64.Type}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

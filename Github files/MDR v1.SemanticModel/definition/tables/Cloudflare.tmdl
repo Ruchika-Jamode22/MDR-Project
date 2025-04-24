@@ -1,0 +1,107 @@
+table Cloudflare
+	lineageTag: 317584df-fcd5-4c7c-a0d5-55d654e5b5a3
+
+	column Date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 9bd4bdf8-070a-44fb-84d4-4c2d0586df32
+		summarizeBy: none
+		sourceColumn: Date
+
+		variation Variation
+			isDefault
+			relationship: 625a0c7b-1b5d-411c-b06e-3c36cb2e1024
+			defaultHierarchy: LocalDateTable_ba6ba356-af0a-4dfd-a685-708523be8fad.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Shift Time (BKK)'
+		dataType: string
+		lineageTag: c125b38c-f71b-486a-87ca-cbb5f8b725e2
+		summarizeBy: none
+		sourceColumn: Shift Time (BKK)
+
+		annotation SummarizationSetBy = Automatic
+
+	column Shift
+		dataType: string
+		lineageTag: 996d0fca-3bbd-4afb-b2a5-069efca72cd2
+		summarizeBy: none
+		sourceColumn: Shift
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Attack Description'
+		dataType: string
+		lineageTag: 9348fd47-8c8e-4360-900b-af5560ea5dfb
+		summarizeBy: none
+		sourceColumn: Attack Description
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Target zone'
+		dataType: string
+		lineageTag: 22426953-3f11-4f97-8b3b-3e896c9dc25c
+		summarizeBy: none
+		sourceColumn: Target zone
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Target hostname'
+		dataType: string
+		lineageTag: 13eca241-74f4-42a6-b015-d53cd110b00a
+		summarizeBy: none
+		sourceColumn: Target hostname
+
+		annotation SummarizationSetBy = Automatic
+
+	column UTC
+		dataType: string
+		lineageTag: c4b20a98-22bf-4827-bb5e-0198c57cdbbe
+		summarizeBy: none
+		sourceColumn: UTC
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'BKK Time'
+		dataType: dateTime
+		formatString: hh:nn:ss
+		lineageTag: 4e6dabaa-db24-4c2c-882d-d54bf4f96767
+		summarizeBy: none
+		sourceColumn: BKK Time
+
+		variation Variation
+			isDefault
+			relationship: fcb555ef-3d62-44a1-8578-2288585b2d4d
+			defaultHierarchy: LocalDateTable_5d6a9a94-249a-4300-8437-14d86ffb9c33.'Date Hierarchy'
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	partition Cloudflare = m
+		mode: import
+		source =
+				let
+				    Source = GoogleSheets.Contents("https://docs.google.com/spreadsheets/d/1PsQQV2ap6AKuWiRY9S219ySW1yrv23uXNoJ7mHSHf-E/edit?gid=52096905#gid=52096905"),
+				    Cloudflare_Table = Source{[name="Cloudflare",ItemKind="Table"]}[Data],
+				    #"Promoted Headers" = Table.PromoteHeaders(Cloudflare_Table, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Date", type date}, {"Shift Time (BKK)", type text}, {"Shift", type text}, {"Attack Description", type text}}),
+				    #"Inserted Text Between Delimiters" = Table.AddColumn(#"Changed Type", "Text Between Delimiters", each Text.BetweenDelimiters([Attack Description], " ", "#(lf)", 12, 0), type text),
+				    #"Inserted Text Between Delimiters1" = Table.AddColumn(#"Inserted Text Between Delimiters", "Text Between Delimiters.1", each Text.BetweenDelimiters([Attack Description], " ", "#(lf)", 14, 0), type text),
+				    #"Renamed Columns" = Table.RenameColumns(#"Inserted Text Between Delimiters1",{{"Text Between Delimiters", "Target zone"}, {"Text Between Delimiters.1", "Target hostname"}}),
+				    #"Inserted Text Between Delimiters2" = Table.AddColumn(#"Renamed Columns", "Text Between Delimiters", each Text.BetweenDelimiters([Attack Description], "T", "Z", 1, 0), type text),
+				    #"Renamed Columns1" = Table.RenameColumns(#"Inserted Text Between Delimiters2",{{"Text Between Delimiters", "UTC"}}),
+				    #"Added Conditional Column" = Table.AddColumn(#"Renamed Columns1", "Custom", each if [Attack Description] = "Attack ID 68b552a3-b8be-4f4f-87c0-85255c52149b#(lf)Time detected 2025-02-07T08:30:24Z UTC#(lf)Type HTTP Flood#(lf)Action managed_challenge#(lf)Max rate 330.00 rps#(lf)Target zone ambsuperapi.com#(lf)Target hostname pgsoft.ambsuperapi.com#(lf)These are the rule details matching this attack#(lf)Rule ID 603be41d114b4fc28c85de27c86adf25#(lf)Rule description HTTP requests with unusual HTTP headers or URI path (signature #38). Only for zones on PRO plan and above" then #time(15, 30, 24) else if [Attack Description] = "Attack ID 53e5b22e-9995-47ba-8167-1d8a835a69d2#(lf)Time detected 2025-02-07T09:38:27Z UTC#(lf)Type HTTP Flood#(lf)Action managed_challenge#(lf)Max rate 110.00 rps#(lf)Target zone ambsuperapi.com#(lf)Target hostname pgsoft.ambsuperapi.com#(lf)These are the rule details matching this attack#(lf)Rule ID 603be41d114b4fc28c85de27c86adf25#(lf)Rule description HTTP requests with unusual HTTP headers or URI path (signature #38). Only for zones on PRO plan and above" then #time(16, 38, 27) else if [Attack Description] = "Attack ID 6aa62216-b652-4e7c-bf80-c503e64b0990#(lf)Time detected 2025-02-07T10:44:20Z UTC#(lf)Type HTTP Flood#(lf)Action managed_challenge#(lf)Max rate 840.00 rps#(lf)Target zone ambsuperapi.com#(lf)Target hostname pgsoft.ambsuperapi.com#(lf)These are the rule details matching this attack#(lf)Rule ID 603be41d114b4fc28c85de27c86adf25#(lf)Rule description HTTP requests with unusual HTTP headers or URI path (signature #38). Only for zones on PRO plan and above." then #time(17, 44, 20) else null, type time),
+				    #"Renamed Columns2" = Table.RenameColumns(#"Added Conditional Column",{{"Custom", "BKK Time"}})
+				in
+				    #"Renamed Columns2"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

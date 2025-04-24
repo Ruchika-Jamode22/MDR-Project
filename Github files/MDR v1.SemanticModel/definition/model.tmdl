@@ -1,0 +1,32 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-IN
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation PBI_QueryOrder = ["Elastic","Aqua sec","Upwind-humans","Upwind-machines","Upwind-vulnerabilities","Dim_Date","Dim_Shift","Cloudflare"]
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBIDesktopVersion = 2.142.928.0 (25.04)+de52df9f0bb74ad93a80d89c52d63fe6d07e0e1b
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table Elastic
+ref table DateTableTemplate_eb45baea-c736-4655-a1ea-7c5fbf36b3e1
+ref table 'Aqua sec'
+ref table LocalDateTable_f320c4f4-ab8c-42af-87bc-471e01369648
+ref table Upwind-humans
+ref table Upwind-machines
+ref table Upwind-vulnerabilities
+ref table Dim_Date
+ref table LocalDateTable_77b5ca86-ca62-4f18-99df-857f2dfbeb37
+ref table Dim_Shift
+ref table Cloudflare
+ref table LocalDateTable_ba6ba356-af0a-4dfd-a685-708523be8fad
+ref table LocalDateTable_5d6a9a94-249a-4300-8437-14d86ffb9c33
+
+ref cultureInfo en-US
+

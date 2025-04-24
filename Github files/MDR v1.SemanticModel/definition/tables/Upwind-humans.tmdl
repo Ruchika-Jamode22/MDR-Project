@@ -1,0 +1,102 @@
+table Upwind-humans
+	lineageTag: a322c09c-933f-4711-b3c2-f775b20579be
+
+	measure HighPrivilegePercentage_2 = ```
+			
+			VAR TotalCount = COUNTROWS( 'Upwind-humans' )
+			VAR HighCount = CALCULATE( COUNTROWS( 'Upwind-humans' ), 'Upwind-humans'[Privilege] = 1 )
+			RETURN 
+			IF( TotalCount = 0, 0, DIVIDE( HighCount, TotalCount, 0 ) )
+			```
+		formatString: 0%;-0%;0%
+		lineageTag: 23c9fad2-6250-4e47-8c2c-abd9d8502389
+
+	column name
+		dataType: string
+		lineageTag: 7e7e59df-8371-49c1-90ce-fd0cc433b760
+		summarizeBy: none
+		sourceColumn: name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'identity provider'
+		dataType: string
+		lineageTag: 67698c51-89e7-4356-a829-8d5e0d155473
+		summarizeBy: none
+		sourceColumn: identity provider
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'cloud account'
+		dataType: string
+		lineageTag: 8830c2da-701f-41d1-971e-2721c8269784
+		summarizeBy: none
+		sourceColumn: cloud account
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'risk overview'
+		dataType: string
+		lineageTag: 5ceceb3b-61af-4ed6-823d-b7eec1c291d3
+		summarizeBy: none
+		sourceColumn: risk overview
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: df559203-bdf2-49d2-90bb-e4ca231ad69c
+		summarizeBy: none
+		sourceColumn: Date
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Shift Time (BKK)'
+		dataType: string
+		lineageTag: a7282c11-923c-4bb1-8f44-c0cf3c72ddcd
+		summarizeBy: none
+		sourceColumn: Shift Time (BKK)
+
+		annotation SummarizationSetBy = Automatic
+
+	column Shift
+		dataType: string
+		lineageTag: 4c0294e5-0c97-4a3a-be3e-f809c4bcbfb7
+		summarizeBy: none
+		sourceColumn: Shift
+
+		annotation SummarizationSetBy = Automatic
+
+	column Privilege
+		dataType: int64
+		formatString: 0
+		lineageTag: 8425d248-aeb2-4837-befc-4b27f1d32e44
+		summarizeBy: sum
+		sourceColumn: Privilege
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Upwind-humans = m
+		mode: import
+		source =
+				let
+				    Source = GoogleSheets.Contents("https://docs.google.com/spreadsheets/d/1PsQQV2ap6AKuWiRY9S219ySW1yrv23uXNoJ7mHSHf-E/edit?gid=2030916635#gid=2030916635"),
+				    #"Upwind-humans_Table" = Source{[name="Upwind-humans",ItemKind="Table"]}[Data],
+				    #"Promoted Headers" = Table.PromoteHeaders(#"Upwind-humans_Table", [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"name", type text}, {"identity provider", type text}, {"cloud account", type any}, {"risk overview", type text}}),
+				    #"Inserted Literal" = Table.AddColumn(#"Changed Type", "Literal", each "1", type text),
+				    #"Renamed Columns" = Table.RenameColumns(#"Inserted Literal",{{"Literal", "Privilege"}})
+				in
+				    #"Renamed Columns"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

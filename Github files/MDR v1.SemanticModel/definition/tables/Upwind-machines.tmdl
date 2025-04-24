@@ -1,0 +1,111 @@
+table Upwind-machines
+	lineageTag: e43175e1-f322-44a3-93f5-65565ecf3c5d
+
+	measure HighPrivilegePercentage = ```
+			
+			VAR TotalCount = COUNTROWS( 'Upwind-machines' )
+			VAR HighCount = CALCULATE( COUNTROWS( 'Upwind-machines' ), 'Upwind-machines'[Privilege] = 1 )
+			RETURN 
+			IF( TotalCount = 0, 0, DIVIDE( HighCount, TotalCount, 0 ) )
+			```
+		formatString: 0%;-0%;0%
+		lineageTag: 23010030-a02b-484f-b85b-b1f44e901246
+
+	column 'Role name'
+		dataType: string
+		lineageTag: 5c06d2a1-9787-4ebd-9bd3-c780dab7a674
+		summarizeBy: none
+		sourceColumn: Role name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Role type'
+		dataType: string
+		lineageTag: 5b99b756-07ed-4d24-85a1-be9565f130e8
+		summarizeBy: none
+		sourceColumn: Role type
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Resources using role'
+		dataType: int64
+		formatString: 0
+		lineageTag: 82caf6ab-4ec9-4fd5-ab75-cf2637cf2d61
+		summarizeBy: sum
+		sourceColumn: Resources using role
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Identity risk'
+		dataType: string
+		lineageTag: 6dd23b83-172b-4e44-ba79-23df3e928929
+		summarizeBy: none
+		sourceColumn: Identity risk
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Last activity'
+		dataType: string
+		lineageTag: 7139f76b-e005-40dd-99e5-35bfb34fb7ee
+		summarizeBy: none
+		sourceColumn: Last activity
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: ef2e6685-7d57-4d72-8b28-aae58daf3ab9
+		summarizeBy: none
+		sourceColumn: Date
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Shift Time (BKK)'
+		dataType: string
+		lineageTag: b23efc45-16a9-4b4c-9823-88d3b7277c49
+		summarizeBy: none
+		sourceColumn: Shift Time (BKK)
+
+		annotation SummarizationSetBy = Automatic
+
+	column Shift
+		dataType: string
+		lineageTag: bdbd2de5-cae0-45d5-8aab-008dd8ba5eb3
+		summarizeBy: none
+		sourceColumn: Shift
+
+		annotation SummarizationSetBy = Automatic
+
+	column Privilege
+		dataType: double
+		formatString: 0
+		lineageTag: 7a7007e3-8f5c-4476-afce-7e1dbe796aa5
+		summarizeBy: sum
+		sourceColumn: Privilege
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	partition Upwind-machines = m
+		mode: import
+		source =
+				let
+				    Source = GoogleSheets.Contents("https://docs.google.com/spreadsheets/d/1PsQQV2ap6AKuWiRY9S219ySW1yrv23uXNoJ7mHSHf-E/edit?gid=2030916635#gid=2030916635"),
+				    #"Upwind-machines_Table" = Source{[name="Upwind-machines",ItemKind="Table"]}[Data],
+				    #"Promoted Headers" = Table.PromoteHeaders(#"Upwind-machines_Table", [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Role name", type text}, {"Role type", type text}, {"Resources using role", Int64.Type}, {"Identity risk", type text}, {"Last activity", type text}}),
+				    #"Added Conditional Column" = Table.AddColumn(#"Changed Type", "Custom", each if [Identity risk] = "Has Low privilege, Configurations: N/A" then 0 else if [Identity risk] = "Has High privilege, Configurations: N/A" then 1 else null, type number),
+				    #"Renamed Columns" = Table.RenameColumns(#"Added Conditional Column",{{"Custom", "Privilege"}})
+				in
+				    #"Renamed Columns"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

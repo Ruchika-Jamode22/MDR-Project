@@ -1,0 +1,97 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/report/1.2.0/schema.json",
+  "themeCollection": {
+    "baseTheme": {
+      "name": "CY24SU10",
+      "reportVersionAtImport": "5.61",
+      "type": "SharedResources"
+    }
+  },
+  "layoutOptimization": "None",
+  "objects": {
+    "section": [
+      {
+        "properties": {
+          "verticalAlignment": {
+            "expr": {
+              "Literal": {
+                "Value": "'Top'"
+              }
+            }
+          }
+        }
+      }
+    ],
+    "outspacePane": [
+      {
+        "properties": {
+          "expanded": {
+            "expr": {
+              "Literal": {
+                "Value": "false"
+              }
+            }
+          },
+          "visible": {
+            "expr": {
+              "Literal": {
+                "Value": "false"
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "resourcePackages": [
+    {
+      "name": "SharedResources",
+      "type": "SharedResources",
+      "items": [
+        {
+          "name": "CY24SU10",
+          "path": "BaseThemes/CY24SU10.json",
+          "type": "BaseTheme"
+        }
+      ]
+    },
+    {
+      "name": "RegisteredResources",
+      "type": "RegisteredResources",
+      "items": [
+        {
+          "name": "Screenshot_2025-02-26_1537145133527360737318.png",
+          "path": "Screenshot_2025-02-26_1537145133527360737318.png",
+          "type": "Image"
+        },
+        {
+          "name": "CF6452195625816102.png",
+          "path": "CF6452195625816102.png",
+          "type": "Image"
+        },
+        {
+          "name": "Screenshot_2025-02-26_15454216803594362074858.png",
+          "path": "Screenshot_2025-02-26_15454216803594362074858.png",
+          "type": "Image"
+        },
+        {
+          "name": "Screenshot_2025-02-26_1547318347582658446064.png",
+          "path": "Screenshot_2025-02-26_1547318347582658446064.png",
+          "type": "Image"
+        },
+        {
+          "name": "Screenshot_2025-02-26_1550228020628437918751.png",
+          "path": "Screenshot_2025-02-26_1550228020628437918751.png",
+          "type": "Image"
+        }
+      ]
+    }
+  ],
+  "settings": {
+    "useStylableVisualContainerHeader": true,
+    "defaultDrillFilterOtherVisuals": true,
+    "allowChangeFilterTypes": true,
+    "useEnhancedTooltips": true,
+    "useDefaultAggregateDisplayName": true
+  }
+}

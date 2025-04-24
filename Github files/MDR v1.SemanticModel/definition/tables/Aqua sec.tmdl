@@ -1,0 +1,695 @@
+table 'Aqua sec'
+	lineageTag: 091a473b-dc13-40d1-b658-0fc083e6c2ad
+
+	column default_branch
+		dataType: string
+		lineageTag: 837c5970-25cb-481f-9e0d-494a63e5702c
+		summarizeBy: none
+		sourceColumn: default_branch
+
+		annotation SummarizationSetBy = Automatic
+
+	column existing_scan
+		dataType: string
+		lineageTag: 2848d914-ec2d-4531-bca7-f4953dea4feb
+		summarizeBy: none
+		sourceColumn: existing_scan
+
+		annotation SummarizationSetBy = Automatic
+
+	column full_name
+		dataType: string
+		lineageTag: f32703a4-7072-4750-be09-b213ffbdda77
+		summarizeBy: none
+		sourceColumn: full_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column integration_name
+		dataType: string
+		lineageTag: 5845cb36-5f61-4888-930b-342841beae99
+		summarizeBy: none
+		sourceColumn: integration_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_archived
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 284c687a-7114-4cdb-94c7-7e71604352a9
+		summarizeBy: none
+		sourceColumn: is_archived
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'last_scan.branch'
+		dataType: string
+		lineageTag: c5960d28-305e-4600-b777-c95c3cb99219
+		summarizeBy: none
+		sourceColumn: last_scan.branch
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'last_scan.build_system'
+		dataType: string
+		lineageTag: 92d81e38-ae0d-4722-bac9-6fb4a3861193
+		summarizeBy: none
+		sourceColumn: last_scan.build_system
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'last_scan.commit_id'
+		dataType: string
+		lineageTag: aa95a722-6a26-422c-a22b-72754be1a51f
+		summarizeBy: none
+		sourceColumn: last_scan.commit_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'last_scan.critical_severity_count'
+		dataType: int64
+		formatString: #,0
+		lineageTag: 4e396e8e-4648-44bd-98fb-40006303a1fb
+		summarizeBy: sum
+		sourceColumn: last_scan.critical_severity_count
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'last_scan.git_user'
+		dataType: string
+		lineageTag: 81738b18-c821-4b8f-ac4c-bb7526c9cd1e
+		summarizeBy: none
+		sourceColumn: last_scan.git_user
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'last_scan.high_severity_count'
+		dataType: int64
+		formatString: #,0
+		lineageTag: 987ed128-ebd1-411f-9417-ff25f9813233
+		summarizeBy: sum
+		sourceColumn: last_scan.high_severity_count
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'last_scan.impacted_file_count'
+		dataType: int64
+		formatString: 0
+		lineageTag: cbcfb858-3382-4121-ab8a-e2b4212a29c7
+		summarizeBy: sum
+		sourceColumn: last_scan.impacted_file_count
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'last_scan.low_severity_count'
+		dataType: int64
+		formatString: #,0
+		lineageTag: 2149d616-dc92-4b78-a4ff-324f323b7f1f
+		summarizeBy: sum
+		sourceColumn: last_scan.low_severity_count
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'last_scan.medium_severity_count'
+		dataType: int64
+		formatString: #,0
+		lineageTag: ec939dec-066b-4dd1-b8ef-437a0a34b6f1
+		summarizeBy: sum
+		sourceColumn: last_scan.medium_severity_count
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'last_scan.misconfigurations_severity_count.critical_severity_count'
+		dataType: int64
+		formatString: 0
+		lineageTag: 4136fb87-1df6-47bb-a7e7-130da74ff68f
+		summarizeBy: sum
+		sourceColumn: last_scan.misconfigurations_severity_count.critical_severity_count
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'last_scan.misconfigurations_severity_count.high_severity_count'
+		dataType: int64
+		formatString: 0
+		lineageTag: e40a0cdd-c12e-4d86-a19a-c64cd11a24d3
+		summarizeBy: sum
+		sourceColumn: last_scan.misconfigurations_severity_count.high_severity_count
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'last_scan.misconfigurations_severity_count.low_severity_count'
+		dataType: int64
+		formatString: 0
+		lineageTag: 4bcf4620-2688-4103-935b-d0bd87a4820c
+		summarizeBy: sum
+		sourceColumn: last_scan.misconfigurations_severity_count.low_severity_count
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'last_scan.misconfigurations_severity_count.medium_severity_count'
+		dataType: int64
+		formatString: 0
+		lineageTag: 5d80ce6e-017b-405c-8591-47af3320d986
+		summarizeBy: sum
+		sourceColumn: last_scan.misconfigurations_severity_count.medium_severity_count
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'last_scan.misconfigurations_severity_count.unknown_severity_count'
+		dataType: int64
+		formatString: 0
+		lineageTag: 61c10f32-3121-4177-a69d-43c78e7803aa
+		summarizeBy: sum
+		sourceColumn: last_scan.misconfigurations_severity_count.unknown_severity_count
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'last_scan.pipeline_misconfigurations_severity_count.critical_severity_count'
+		dataType: int64
+		formatString: 0
+		lineageTag: 9010860a-c924-4ce7-9e39-6bb0deca863e
+		summarizeBy: sum
+		sourceColumn: last_scan.pipeline_misconfigurations_severity_count.critical_severity_count
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'last_scan.pipeline_misconfigurations_severity_count.high_severity_count'
+		dataType: int64
+		formatString: 0
+		lineageTag: aa542d39-1070-4c84-890e-9f85cdeddd9c
+		summarizeBy: sum
+		sourceColumn: last_scan.pipeline_misconfigurations_severity_count.high_severity_count
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'last_scan.pipeline_misconfigurations_severity_count.low_severity_count'
+		dataType: int64
+		formatString: 0
+		lineageTag: 5d9d5935-6226-4263-913d-7326719131c0
+		summarizeBy: sum
+		sourceColumn: last_scan.pipeline_misconfigurations_severity_count.low_severity_count
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'last_scan.pipeline_misconfigurations_severity_count.medium_severity_count'
+		dataType: int64
+		formatString: 0
+		lineageTag: a6d947f3-b934-491e-a606-967c7d6260cb
+		summarizeBy: sum
+		sourceColumn: last_scan.pipeline_misconfigurations_severity_count.medium_severity_count
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'last_scan.pipeline_misconfigurations_severity_count.unknown_severity_count'
+		dataType: int64
+		formatString: 0
+		lineageTag: 86065b2b-1b76-4970-a25d-8cbaa63adf64
+		summarizeBy: sum
+		sourceColumn: last_scan.pipeline_misconfigurations_severity_count.unknown_severity_count
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'last_scan.policy_failure_count'
+		dataType: int64
+		formatString: 0
+		lineageTag: 2e1f8ec8-7d99-43dc-904c-de293d89ebcc
+		summarizeBy: sum
+		sourceColumn: last_scan.policy_failure_count
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'last_scan.policy_pass_count'
+		dataType: int64
+		formatString: 0
+		lineageTag: 14497cb5-6f2f-4292-8273-0f75ed164780
+		summarizeBy: sum
+		sourceColumn: last_scan.policy_pass_count
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'last_scan.policy_warning_count'
+		dataType: int64
+		formatString: 0
+		lineageTag: e81c4c71-5cdb-4f66-8696-e709ae9e5567
+		summarizeBy: sum
+		sourceColumn: last_scan.policy_warning_count
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'last_scan.sast_severity_count.critical_severity_count'
+		dataType: int64
+		formatString: 0
+		lineageTag: f765ad5f-2359-4a25-97e9-dbd947f96c0c
+		summarizeBy: sum
+		sourceColumn: last_scan.sast_severity_count.critical_severity_count
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'last_scan.sast_severity_count.high_severity_count'
+		dataType: int64
+		formatString: 0
+		lineageTag: 53983d40-a126-43b2-9de6-2e4f807e2dc0
+		summarizeBy: sum
+		sourceColumn: last_scan.sast_severity_count.high_severity_count
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'last_scan.sast_severity_count.low_severity_count'
+		dataType: int64
+		formatString: 0
+		lineageTag: 3204445f-a0ef-43a7-b56f-326dba407c21
+		summarizeBy: sum
+		sourceColumn: last_scan.sast_severity_count.low_severity_count
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'last_scan.sast_severity_count.medium_severity_count'
+		dataType: int64
+		formatString: 0
+		lineageTag: 9bfddc71-6524-4b3b-bce8-a1a3639631a6
+		summarizeBy: sum
+		sourceColumn: last_scan.sast_severity_count.medium_severity_count
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'last_scan.sast_severity_count.unknown_severity_count'
+		dataType: int64
+		formatString: 0
+		lineageTag: e7f0b3b0-23d7-4e5c-88b7-53b1cf793416
+		summarizeBy: sum
+		sourceColumn: last_scan.sast_severity_count.unknown_severity_count
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'last_scan.scan_date'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 67b61c0b-920e-4588-94cd-18a80cd918c3
+		summarizeBy: none
+		sourceColumn: last_scan.scan_date
+
+		variation Variation
+			isDefault
+			relationship: 0dab13d4-0256-4c47-8588-f1c760d479f3
+			defaultHierarchy: LocalDateTable_f320c4f4-ab8c-42af-87bc-471e01369648.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'last_scan.scan_id'
+		dataType: string
+		lineageTag: 0f00ad2b-6983-4bd6-a199-d0dec7ea3be3
+		summarizeBy: none
+		sourceColumn: last_scan.scan_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'last_scan.scm_link'
+		dataType: string
+		lineageTag: fd3de378-6d70-4752-83a5-09b59f22d7c0
+		summarizeBy: none
+		sourceColumn: last_scan.scm_link
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'last_scan.secrets_severity_count.critical_severity_count'
+		dataType: int64
+		formatString: 0
+		lineageTag: d4c7fcfd-4eb7-4238-9816-8575214b3afe
+		summarizeBy: sum
+		sourceColumn: last_scan.secrets_severity_count.critical_severity_count
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'last_scan.secrets_severity_count.high_severity_count'
+		dataType: int64
+		formatString: 0
+		lineageTag: 910f6262-fb62-4de7-bf4f-7a808ecc9632
+		summarizeBy: sum
+		sourceColumn: last_scan.secrets_severity_count.high_severity_count
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'last_scan.secrets_severity_count.low_severity_count'
+		dataType: int64
+		formatString: 0
+		lineageTag: 13bcf6f9-044d-4c58-a75c-cbc6da05e6f9
+		summarizeBy: sum
+		sourceColumn: last_scan.secrets_severity_count.low_severity_count
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'last_scan.secrets_severity_count.medium_severity_count'
+		dataType: int64
+		formatString: 0
+		lineageTag: b392dd38-b14a-434a-b493-5733cef3fdeb
+		summarizeBy: sum
+		sourceColumn: last_scan.secrets_severity_count.medium_severity_count
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'last_scan.secrets_severity_count.unknown_severity_count'
+		dataType: int64
+		formatString: 0
+		lineageTag: 425a396f-bccb-4766-9302-91c41b755fc3
+		summarizeBy: sum
+		sourceColumn: last_scan.secrets_severity_count.unknown_severity_count
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'last_scan.tags'
+		dataType: string
+		lineageTag: 107ee7a5-1e78-4515-8615-f6da4218c29a
+		summarizeBy: none
+		sourceColumn: last_scan.tags
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'last_scan.triggered_by'
+		dataType: string
+		lineageTag: b38f999c-9be3-470e-9bb9-25d4c351f55f
+		summarizeBy: none
+		sourceColumn: last_scan.triggered_by
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'last_scan.unknown_severity_count'
+		dataType: int64
+		formatString: 0
+		lineageTag: 8b5d5793-f619-4226-98ec-053347db156b
+		summarizeBy: sum
+		sourceColumn: last_scan.unknown_severity_count
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'last_scan.vulnerabilities_severity_count.critical_severity_count'
+		dataType: int64
+		formatString: 0
+		lineageTag: e41965f0-c013-4c64-ba7b-f7986cd3f005
+		summarizeBy: sum
+		sourceColumn: last_scan.vulnerabilities_severity_count.critical_severity_count
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'last_scan.vulnerabilities_severity_count.high_severity_count'
+		dataType: int64
+		formatString: 0
+		lineageTag: 79ed9383-9aec-4309-a855-c6bd1e8705d2
+		summarizeBy: sum
+		sourceColumn: last_scan.vulnerabilities_severity_count.high_severity_count
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'last_scan.vulnerabilities_severity_count.low_severity_count'
+		dataType: int64
+		formatString: 0
+		lineageTag: 19045554-86d9-4377-9c90-fb8c891c746c
+		summarizeBy: sum
+		sourceColumn: last_scan.vulnerabilities_severity_count.low_severity_count
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'last_scan.vulnerabilities_severity_count.medium_severity_count'
+		dataType: int64
+		formatString: 0
+		lineageTag: 71322d0e-2852-4bdf-9be0-485ef40d4337
+		summarizeBy: sum
+		sourceColumn: last_scan.vulnerabilities_severity_count.medium_severity_count
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'last_scan.vulnerabilities_severity_count.unknown_severity_count'
+		dataType: int64
+		formatString: 0
+		lineageTag: 084ab576-d335-47fb-87df-a6bf9918887f
+		summarizeBy: sum
+		sourceColumn: last_scan.vulnerabilities_severity_count.unknown_severity_count
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'metadata.source'
+		dataType: string
+		lineageTag: 8a95f6bc-534d-46a1-909e-a6b4e0cd0d5c
+		summarizeBy: none
+		sourceColumn: metadata.source
+
+		annotation SummarizationSetBy = Automatic
+
+	column name
+		dataType: string
+		lineageTag: 28049905-b4cb-4361-9c8d-bfa40d72faee
+		summarizeBy: none
+		sourceColumn: name
+
+		annotation SummarizationSetBy = Automatic
+
+	column repository_id
+		dataType: string
+		lineageTag: 301fadb0-36fb-4345-a464-40a25fb09b06
+		summarizeBy: none
+		sourceColumn: repository_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column scan_status
+		dataType: int64
+		formatString: 0
+		lineageTag: 044790ec-e251-43a3-b9c0-fa4de793eb0f
+		summarizeBy: sum
+		sourceColumn: scan_status
+
+		annotation SummarizationSetBy = Automatic
+
+	column scannable_update_type
+		dataType: int64
+		formatString: 0
+		lineageTag: 5f9ed9db-12b2-4762-9849-effcc886e991
+		summarizeBy: sum
+		sourceColumn: scannable_update_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'scanned_languages.Dockerfile'
+		dataType: int64
+		formatString: 0
+		lineageTag: 04c4b679-ff30-4196-b8e6-85a80b005c12
+		summarizeBy: sum
+		sourceColumn: scanned_languages.Dockerfile
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'scanned_languages.EditorConfig'
+		dataType: int64
+		formatString: 0
+		lineageTag: e2c93312-ac4b-4b06-8b16-f52986162383
+		summarizeBy: sum
+		sourceColumn: scanned_languages.EditorConfig
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'scanned_languages.Ignore List'
+		dataType: int64
+		formatString: 0
+		lineageTag: 05aa635e-c06d-4e67-bb12-f89921b8fa80
+		summarizeBy: sum
+		sourceColumn: scanned_languages.Ignore List
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'scanned_languages.JSON'
+		dataType: int64
+		formatString: 0
+		lineageTag: 156a3c83-eb3f-481b-9325-5984aeb8962e
+		summarizeBy: sum
+		sourceColumn: scanned_languages.JSON
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'scanned_languages.JSON with Comments'
+		dataType: int64
+		formatString: 0
+		lineageTag: 49377f52-d313-4625-b189-7ff58866a8b9
+		summarizeBy: sum
+		sourceColumn: scanned_languages.JSON with Comments
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'scanned_languages.JavaScript'
+		dataType: int64
+		formatString: 0
+		lineageTag: 8cf58d23-24fd-4b41-a144-4204c2e2ebae
+		summarizeBy: sum
+		sourceColumn: scanned_languages.JavaScript
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'scanned_languages.Markdown'
+		dataType: int64
+		formatString: 0
+		lineageTag: 2c860909-edf8-4632-b3f7-1083415c68c1
+		summarizeBy: sum
+		sourceColumn: scanned_languages.Markdown
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'scanned_languages.Nginx'
+		dataType: int64
+		formatString: 0
+		lineageTag: 08a9bda5-031f-4a4a-8c0a-30b35237c32d
+		summarizeBy: sum
+		sourceColumn: scanned_languages.Nginx
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'scanned_languages.Other'
+		dataType: int64
+		formatString: 0
+		lineageTag: ae82c6fc-0229-4e42-8709-2069cd22b470
+		summarizeBy: sum
+		sourceColumn: scanned_languages.Other
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'scanned_languages.SCSS'
+		dataType: int64
+		formatString: 0
+		lineageTag: 810f18e5-d089-44ac-a33f-74fa35ff9979
+		summarizeBy: sum
+		sourceColumn: scanned_languages.SCSS
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'scanned_languages.SVG'
+		dataType: int64
+		formatString: 0
+		lineageTag: 3205310f-178c-4271-b354-8d254764cc6b
+		summarizeBy: sum
+		sourceColumn: scanned_languages.SVG
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'scanned_languages.Shell'
+		dataType: int64
+		formatString: 0
+		lineageTag: ad7d7aa7-d708-434d-8203-48efcbb15133
+		summarizeBy: sum
+		sourceColumn: scanned_languages.Shell
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'scanned_languages.Smarty'
+		dataType: int64
+		formatString: 0
+		lineageTag: a410207d-27ec-45c2-b110-68e1f4f4f6db
+		summarizeBy: sum
+		sourceColumn: scanned_languages.Smarty
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'scanned_languages.TypeScript'
+		dataType: int64
+		formatString: 0
+		lineageTag: ede6f67f-4cfe-4b82-a6c4-43ca47302691
+		summarizeBy: sum
+		sourceColumn: scanned_languages.TypeScript
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'scanned_languages.Vue'
+		dataType: int64
+		formatString: 0
+		lineageTag: bd19d2cb-21ff-4396-baa3-9aa0257e5262
+		summarizeBy: sum
+		sourceColumn: scanned_languages.Vue
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'scanned_languages.YAML'
+		dataType: int64
+		formatString: 0
+		lineageTag: 4a128757-271a-4bac-9c90-f6e4a9c96d8a
+		summarizeBy: sum
+		sourceColumn: scanned_languages.YAML
+
+		annotation SummarizationSetBy = Automatic
+
+	column scm_id
+		dataType: string
+		lineageTag: ac2c71da-ac97-4eb5-a50c-175a756797ba
+		summarizeBy: none
+		sourceColumn: scm_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column source
+		dataType: string
+		lineageTag: adb5d326-6eb8-43ab-94f4-9cc2e215b620
+		summarizeBy: none
+		sourceColumn: source
+
+		annotation SummarizationSetBy = Automatic
+
+	column total_scanned_files
+		dataType: int64
+		formatString: 0
+		lineageTag: 643683a9-86c9-4ba1-8c34-61afd321e028
+		summarizeBy: sum
+		sourceColumn: total_scanned_files
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 718353ab-5249-4354-b7e9-53b8d1565dd6
+		summarizeBy: none
+		sourceColumn: Date
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Shift Time (BKK)'
+		dataType: string
+		lineageTag: 17754dd5-5a65-494e-b3b5-d756dd8f3fe7
+		summarizeBy: none
+		sourceColumn: Shift Time (BKK)
+
+		annotation SummarizationSetBy = Automatic
+
+	column Shift
+		dataType: string
+		lineageTag: e265f183-9c8f-4a54-802d-663f14a1d4fa
+		summarizeBy: none
+		sourceColumn: Shift
+
+		annotation SummarizationSetBy = Automatic
+
+	column Threats
+		dataType: int64
+		formatString: #,0
+		lineageTag: af1eae83-ff02-4990-8c38-4025637f845c
+		summarizeBy: sum
+		sourceColumn: Threats
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Aqua sec' = m
+		mode: import
+		source =
+				let
+				    Source = GoogleSheets.Contents("https://docs.google.com/spreadsheets/d/1PsQQV2ap6AKuWiRY9S219ySW1yrv23uXNoJ7mHSHf-E/edit?gid=2030916635#gid=2030916635"),
+				    #"Aqua sec_Table" = Source{[name="Aqua sec",ItemKind="Table"]}[Data],
+				    #"Promoted Headers" = Table.PromoteHeaders(#"Aqua sec_Table", [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"default_branch", type text}, {"existing_scan", type text}, {"full_name", type text}, {"integration_name", type text}, {"is_archived", type logical}, {"last_scan.branch", type text}, {"last_scan.build_system", type text}, {"last_scan.commit_id", type text}, {"last_scan.critical_severity_count", Int64.Type}, {"last_scan.git_user", type text}, {"last_scan.high_severity_count", Int64.Type}, {"last_scan.impacted_file_count", Int64.Type}, {"last_scan.low_severity_count", Int64.Type}, {"last_scan.medium_severity_count", Int64.Type}, {"last_scan.misconfigurations_severity_count.critical_severity_count", Int64.Type}, {"last_scan.misconfigurations_severity_count.high_severity_count", Int64.Type}, {"last_scan.misconfigurations_severity_count.low_severity_count", Int64.Type}, {"last_scan.misconfigurations_severity_count.medium_severity_count", Int64.Type}, {"last_scan.misconfigurations_severity_count.unknown_severity_count", Int64.Type}, {"last_scan.pipeline_misconfigurations_severity_count.critical_severity_count", Int64.Type}, {"last_scan.pipeline_misconfigurations_severity_count.high_severity_count", Int64.Type}, {"last_scan.pipeline_misconfigurations_severity_count.low_severity_count", Int64.Type}, {"last_scan.pipeline_misconfigurations_severity_count.medium_severity_count", Int64.Type}, {"last_scan.pipeline_misconfigurations_severity_count.unknown_severity_count", Int64.Type}, {"last_scan.policy_failure_count", Int64.Type}, {"last_scan.policy_pass_count", Int64.Type}, {"last_scan.policy_warning_count", Int64.Type}, {"last_scan.sast_severity_count.critical_severity_count", Int64.Type}, {"last_scan.sast_severity_count.high_severity_count", Int64.Type}, {"last_scan.sast_severity_count.low_severity_count", Int64.Type}, {"last_scan.sast_severity_count.medium_severity_count", Int64.Type}, {"last_scan.sast_severity_count.unknown_severity_count", Int64.Type}, {"last_scan.scan_date", type datetime}, {"last_scan.scan_id", type text}, {"last_scan.scm_link", type text}, {"last_scan.secrets_severity_count.critical_severity_count", Int64.Type}, {"last_scan.secrets_severity_count.high_severity_count", Int64.Type}, {"last_scan.secrets_severity_count.low_severity_count", Int64.Type}, {"last_scan.secrets_severity_count.medium_severity_count", Int64.Type}, {"last_scan.secrets_severity_count.unknown_severity_count", Int64.Type}, {"last_scan.tags", type any}, {"last_scan.triggered_by", type text}, {"last_scan.unknown_severity_count", Int64.Type}, {"last_scan.vulnerabilities_severity_count.critical_severity_count", Int64.Type}, {"last_scan.vulnerabilities_severity_count.high_severity_count", Int64.Type}, {"last_scan.vulnerabilities_severity_count.low_severity_count", Int64.Type}, {"last_scan.vulnerabilities_severity_count.medium_severity_count", Int64.Type}, {"last_scan.vulnerabilities_severity_count.unknown_severity_count", Int64.Type}, {"metadata.source", type text}, {"name", type text}, {"repository_id", type text}, {"scan_status", Int64.Type}, {"scannable_update_type", Int64.Type}, {"scanned_languages.Dockerfile", Int64.Type}, {"scanned_languages.EditorConfig", Int64.Type}, {"scanned_languages.Ignore List", Int64.Type}, {"scanned_languages.JSON", Int64.Type}, {"scanned_languages.JSON with Comments", Int64.Type}, {"scanned_languages.JavaScript", Int64.Type}, {"scanned_languages.Markdown", Int64.Type}, {"scanned_languages.Nginx", Int64.Type}, {"scanned_languages.Other", Int64.Type}, {"scanned_languages.SCSS", Int64.Type}, {"scanned_languages.SVG", Int64.Type}, {"scanned_languages.Shell", Int64.Type}, {"scanned_languages.Smarty", Int64.Type}, {"scanned_languages.TypeScript", Int64.Type}, {"scanned_languages.Vue", Int64.Type}, {"scanned_languages.YAML", Int64.Type}, {"scm_id", type text}, {"source", type text}, {"total_scanned_files", Int64.Type}}),
+				    #"Added Custom" = Table.AddColumn(#"Changed Type", "Threats", each [last_scan.critical_severity_count] + [last_scan.high_severity_count] + [last_scan.low_severity_count] + [last_scan.medium_severity_count])
+				in
+				    #"Added Custom"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
