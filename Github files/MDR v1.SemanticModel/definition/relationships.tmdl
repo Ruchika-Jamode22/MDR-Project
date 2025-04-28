@@ -1,0 +1,64 @@
+relationship 0dab13d4-0256-4c47-8588-f1c760d479f3
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'Aqua sec'.'last_scan.scan_date'
+	toColumn: LocalDateTable_f320c4f4-ab8c-42af-87bc-471e01369648.Date
+
+relationship ecfecb50-145a-41ea-88e0-dfd06282c404
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Dim_Date.Date
+	toColumn: LocalDateTable_77b5ca86-ca62-4f18-99df-857f2dfbeb37.Date
+
+relationship AutoDetected_699983c2-7dc9-4dff-ad9f-a87c23720815
+	fromColumn: Elastic.Shift
+	toColumn: Dim_Shift.Shift
+
+relationship AutoDetected_2b0fbc80-651d-4524-ac80-6a3431c8d6a5
+	fromColumn: 'Aqua sec'.Shift
+	toColumn: Dim_Shift.Shift
+
+relationship AutoDetected_9dcac891-5974-4efd-8e4c-234771ee008c
+	fromColumn: Upwind-humans.Shift
+	toColumn: Dim_Shift.Shift
+
+relationship AutoDetected_042f7a96-0fc2-4822-878d-b34360a87411
+	fromColumn: Upwind-machines.Shift
+	toColumn: Dim_Shift.Shift
+
+relationship AutoDetected_e73afec7-9eec-4160-932e-2c72dca8f8bd
+	fromColumn: Upwind-vulnerabilities.Shift
+	toColumn: Dim_Shift.Shift
+
+relationship c44c1d4c-833f-b587-b26f-c5b377d1b1f7
+	fromColumn: 'Aqua sec'.Date
+	toColumn: Dim_Date.Date
+
+relationship ac6ecc10-7642-3b23-4c9f-0a509d0b844d
+	fromColumn: Upwind-vulnerabilities.Date
+	toColumn: Dim_Date.Date
+
+relationship 8adc255a-2008-c2d5-0739-fe96c147f7d7
+	fromColumn: Upwind-machines.Date
+	toColumn: Dim_Date.Date
+
+relationship a52b4f47-a263-9aea-9fb3-f93feba969ac
+	fromColumn: Upwind-humans.Date
+	toColumn: Dim_Date.Date
+
+relationship 6c26e7df-0349-be49-66cd-bd3c7667df76
+	fromColumn: Elastic.Date
+	toColumn: Dim_Date.Date
+
+relationship 625a0c7b-1b5d-411c-b06e-3c36cb2e1024
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Cloudflare.Date
+	toColumn: LocalDateTable_ba6ba356-af0a-4dfd-a685-708523be8fad.Date
+
+relationship AutoDetected_453aeda4-bea8-48c6-907d-25fc4b934f59
+	fromColumn: Cloudflare.Shift
+	toColumn: Dim_Shift.Shift
+
+relationship fcb555ef-3d62-44a1-8578-2288585b2d4d
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Cloudflare.'BKK Time'
+	toColumn: LocalDateTable_5d6a9a94-249a-4300-8437-14d86ffb9c33.Date
+

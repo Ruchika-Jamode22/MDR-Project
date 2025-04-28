@@ -1,0 +1,79 @@
+table Elastic
+	lineageTag: f9159385-d173-43f2-b403-f4fb8c6a91e2
+
+	column Date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 20d9d4ef-f7fb-47ff-a834-cc17aaadb310
+		summarizeBy: none
+		sourceColumn: Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Shift time (BKK)'
+		dataType: string
+		lineageTag: 4d05c04d-7c1e-4a96-bdfa-7f56af9b56bb
+		summarizeBy: none
+		sourceColumn: Shift time (BKK)
+
+		annotation SummarizationSetBy = Automatic
+
+	column Shift
+		dataType: string
+		lineageTag: ff5d5872-9a98-4ad3-9c4d-e8a4665c29de
+		summarizeBy: none
+		sourceColumn: Shift
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Alert Severity'
+		dataType: string
+		lineageTag: 32ae5896-c3d6-4560-a705-7fe24d322971
+		summarizeBy: none
+		sourceColumn: Alert Severity
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Type of Alert'
+		dataType: string
+		lineageTag: 15b8abb3-14fb-4c31-b96f-f9a9b09e9dbc
+		summarizeBy: none
+		sourceColumn: Type of Alert
+
+		annotation SummarizationSetBy = Automatic
+
+	column Country
+		dataType: string
+		lineageTag: 23b2ee77-8782-43ef-b1f8-c90afb5a06ad
+		summarizeBy: none
+		sourceColumn: Country
+
+		annotation SummarizationSetBy = Automatic
+
+	column Alerts
+		dataType: int64
+		formatString: #,0
+		lineageTag: f33a888f-af72-4f6a-87ff-4e3f545933d4
+		summarizeBy: sum
+		sourceColumn: Alerts
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Elastic = m
+		mode: import
+		source =
+				let
+				    Source = GoogleSheets.Contents("https://docs.google.com/spreadsheets/d/1PsQQV2ap6AKuWiRY9S219ySW1yrv23uXNoJ7mHSHf-E/edit?gid=1199742397#gid=1199742397"),
+				    Elastic_Table = Source{[name="Elastic",ItemKind="Table"]}[Data],
+				    #"Promoted Headers" = Table.PromoteHeaders(Elastic_Table, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Date", type date}, {"Shift time (BKK)", type text}, {"Alert Severity", type text}, {"Type of Alert", type text}, {"Country", type text}, {"Alerts", Int64.Type}, {"Block", Int64.Type}, {"Managechallenge", Int64.Type}, {"Empty", Int64.Type}, {"Skip", Int64.Type}, {"Challenge", Int64.Type}, {"Log", Int64.Type}}),
+				    #"Removed Columns" = Table.RemoveColumns(#"Changed Type",{"Block", "Managechallenge", "Empty", "Skip", "Challenge", "Log"})
+				in
+				    #"Removed Columns"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

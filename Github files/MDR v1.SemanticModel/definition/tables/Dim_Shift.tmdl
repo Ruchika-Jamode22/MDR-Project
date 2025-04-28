@@ -1,0 +1,26 @@
+table Dim_Shift
+	lineageTag: 6382bf63-fa97-4561-a896-fe950d1618f6
+
+	column Shift
+		dataType: string
+		lineageTag: 7e140f5c-0613-44c9-bc5e-6e45e4ec6826
+		summarizeBy: none
+		sourceColumn: Shift
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Dim_Shift = m
+		mode: import
+		source =
+				let
+				    Source = GoogleSheets.Contents("https://docs.google.com/spreadsheets/d/1PsQQV2ap6AKuWiRY9S219ySW1yrv23uXNoJ7mHSHf-E/edit?gid=858388821#gid=858388821"),
+				    Dim_Shift_Table = Source{[name="Dim_Shift",ItemKind="Table"]}[Data],
+				    #"Promoted Headers" = Table.PromoteHeaders(Dim_Shift_Table, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Shift", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
